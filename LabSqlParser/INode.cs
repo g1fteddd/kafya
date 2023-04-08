@@ -1,0 +1,3 @@
+interface INode {
+	string ToFormattedString();
+}

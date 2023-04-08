@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-namespace LabSqlParser;
 enum TokenType {
 	Spaces,
 	Identifier,
@@ -59,5 +58,51 @@ static class Program {
 			Console.WriteLine($" {token}");
 		}
 		Console.WriteLine();
+		var tree = new Select(
+			new BinaryOperation(
+				new BinaryOperation(
+					new BinaryOperation(
+						new BinaryOperation(
+							new Parenthesis(
+								new Select(
+									new Number("1"),
+									Distinct: true,
+									new Having(
+										new Number("2")
+									)
+								)
+							),
+							BinaryOperator.Multiplicative,
+							new Parenthesis(
+								new Number("3")
+							)
+						),
+						BinaryOperator.Multiplicative,
+						new Parenthesis(
+							new Select(
+								new Number("4"),
+								Distinct: false,
+								Having: null
+							)
+						)
+					),
+					BinaryOperator.Relational,
+					new Parenthesis(
+						new Select(
+							new Number("5"),
+							Distinct: true,
+							Having: null
+						)
+					)
+				),
+				BinaryOperator.Relational,
+				new Number("6")
+			),
+			Distinct: false,
+			new Having(
+				new Number("7")
+			)
+		);
+		Console.WriteLine(tree.ToFormattedString());
 	}
 }
