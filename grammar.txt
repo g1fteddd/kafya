@@ -1,0 +1,6 @@
+# 1. SELECT ( SELECT DISTINCT 1 HAVING 2 ) % ( 3 ) % ( SELECT 4 ) > ( SELECT DISTINCT 5 ) > 6 HAVING 7
+*Select: 'SELECT' 'DISTINCT'? Expression ('HAVING' Expression)?
+Expression: Relational
+Relational: (Relational '>')? Multiplicative
+Multiplicative: (Multiplicative '%')? Primary
+Primary: Number | '(' (Select | Expression) ')'

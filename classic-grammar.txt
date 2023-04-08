@@ -1,0 +1,15 @@
+Select: 'SELECT' 'DISTINCT' Expression 'HAVING' Expression
+Select: 'SELECT' 'DISTINCT' Expression
+Select: 'SELECT' Expression 'HAVING' Expression
+Select: 'SELECT' Expression
+Expression: Relational
+Relational: Relational '>' Multiplicative
+Relational: Multiplicative
+Multiplicative: Multiplicative '%' Primary
+Multiplicative: Primary
+Primary: Number
+Primary: '(' Select ')'
+Primary: '(' Expression ')'
+# Стартовый нетерминал: Select
+# Нетерминалы: Select, Expression, Relational, Multiplicative, Primary
+# Терминалы: 'SELECT', 'DISTINCT', 'HAVING', '>', '%', Number, '(', ')'
