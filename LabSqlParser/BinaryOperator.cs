@@ -1,0 +1,4 @@
+enum BinaryOperator {
+	Relational,
+	Multiplicative,
+};

@@ -1,12 +1,12 @@
 sealed record Select(
 	IExpression SelectExpression,
-	bool? Distinct,
-	Having? Having
+	bool Distinct,
+	IExpression? Having
 ) : IExpression {
 	public string ToFormattedString() {
 		var selectExpression = SelectExpression.ToFormattedString();
 		var distinct = Distinct == false ? "" : " DISTINCT";
-		var having = Having == null ? "" : Having.ToFormattedString();
+		var having = Having == null ? "" : $" HAVING {Having.ToFormattedString()}";
 		return $"SELECT{distinct} {selectExpression}{having}";
 	}
 }

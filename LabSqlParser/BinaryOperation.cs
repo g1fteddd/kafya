@@ -1,4 +1,3 @@
-enum BinaryOperator { Relational, Multiplicative };
 sealed record BinaryOperation(
 	IExpression Left,
 	BinaryOperator Operator,

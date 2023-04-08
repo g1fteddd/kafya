@@ -17,9 +17,7 @@ static class Program {
 								new Select(
 									new Number("1"),
 									Distinct: true,
-									new Having(
-										new Number("2")
-									)
+									new Number("2")
 								)
 							),
 							BinaryOperator.Multiplicative,
@@ -49,9 +47,7 @@ static class Program {
 				new Number("6")
 			),
 			Distinct: false,
-			new Having(
-				new Number("7")
-			)
+			new Number("7")
 		);
 		Console.WriteLine(tree.ToFormattedString());
 	}
