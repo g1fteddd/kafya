@@ -1,0 +1,13 @@
+#!/bin/bash
+set -Eeuxo pipefail
+cd "$(dirname -- "$(realpath -- "${BASH_SOURCE[0]}")")"
+set -x
+time (
+	./fix-scripts
+	./build-debug
+	./dotnet-format
+	./format-text-files
+	./build-release
+	./check-dotnet-format
+	true
+)

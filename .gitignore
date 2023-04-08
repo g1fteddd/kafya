@@ -1,0 +1,7 @@
+_temp_*
+.vs
+*.bak
+*.user
+bin
+Generated/
+obj
