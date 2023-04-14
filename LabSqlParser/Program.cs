@@ -50,5 +50,8 @@ static class Program {
 			new Number("7")
 		);
 		Console.WriteLine(tree.ToFormattedString());
+		var parsedTree = Parser.Parse(tokens);
+		Console.WriteLine(parsedTree.ToFormattedString());
+		new DebugPrintingVisitor(Console.Out, 2).WriteLine(parsedTree);
 	}
 }

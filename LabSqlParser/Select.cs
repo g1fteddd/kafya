@@ -1,3 +1,4 @@
+namespace LabSqlParser;
 sealed record Select(
 	IExpression SelectExpression,
 	bool Distinct,
@@ -8,5 +9,8 @@ sealed record Select(
 		var distinct = Distinct == false ? "" : " DISTINCT";
 		var having = Having == null ? "" : $" HAVING {Having.ToFormattedString()}";
 		return $"SELECT{distinct} {selectExpression}{having}";
+	}
+	public void AcceptVisitor(INodeVisitor visitor) {
+		visitor.VisitSelect(this);
 	}
 }

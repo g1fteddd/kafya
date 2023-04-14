@@ -1,3 +1,4 @@
+namespace LabSqlParser;
 sealed record BinaryOperation(
 	IExpression Left,
 	BinaryOperator Operator,
@@ -12,5 +13,8 @@ sealed record BinaryOperation(
 			default:
 				return "";
 		}
+	}
+	public void AcceptVisitor(INodeVisitor visitor) {
+		visitor.VisitBinaryOperation(this);
 	}
 }
